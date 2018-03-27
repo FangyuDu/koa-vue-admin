@@ -14,7 +14,7 @@ module.exports = function (N) {
   app.use(log)
   app.use(mount('/static', ks(N.static)))
   app.use(routes.routes())
-  app.listen(8080, () => {
-    console.log(chalk.green('服务器已启动，端口：8080'))
+  app.listen(N.port, () => {
+    console.log(chalk.green(`服务器已启动，端口：${N.port}`))
   })
 }
