@@ -4,17 +4,25 @@
   "description": "---|---",
   "main": "index.js",
   "scripts": {
-    "start": "node server"
+    "start": "nodemon -w server index.js"
   },
   "author": "dufy",
   "license": "MIT",
   "devDependencies": {
+    "babel-polyfill": "^6.26.0",
+    "babel-preset-env": "^1.6.1",
+    "nodemon": "^1.17.2",
     "vue-loader": "^14.2.2",
     "webpack": "^4.1.0",
     "webpack-dev-server": "^3.1.1"
   },
   "dependencies": {
+    "babel-core": "^6.26.0",
     "chalk": "^2.3.2",
-    "koa": "^2.5.0"
+    "koa": "^2.5.0",
+    "koa-mount": "^3.0.0",
+    "koa-router": "^7.4.0",
+    "koa-static": "^4.0.2",
+    "nodegit": "^0.21.2"
   }
 }
