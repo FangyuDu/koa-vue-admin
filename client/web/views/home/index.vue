@@ -16,7 +16,7 @@ export default {
   data() {
     return {
       form: {
-        url: '',
+        url: 'https://github.com/FangyuDu/assist',
         branch: null
       }
     }

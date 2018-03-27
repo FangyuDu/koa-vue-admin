@@ -5,12 +5,15 @@ import mount from 'koa-mount'
 import routes from './routes'
 import controller from './controller'
 import cors from 'koa2-cors'
+import bodyParser from 'koa-bodyparser'
+
 const app = new koa()
 
 // 中间件
 import log from './mid/log'
 
-module.exports = function (N) { 
+module.exports = function (N) {
+  app.use(bodyParser())
   app.use(log)
   app.use(cors())
   app.use(mount('/static', ks(N.static)))
