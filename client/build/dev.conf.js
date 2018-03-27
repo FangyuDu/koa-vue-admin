@@ -12,7 +12,8 @@ module.exports = function (N) {
     resolve: {
       extensions: ['.js', '.vue', '.json', 'scss'],
       alias: {
-        vue$: 'vue/dist/vue.esm.js'
+        vue$: 'vue/dist/vue.esm.js',
+        $nm: path.join(N.dist, 'node_modules')
       }
     },
     module: {
@@ -31,16 +32,36 @@ module.exports = function (N) {
           name: path.posix.join('static', 'img/[name].[hash:8].[ext]')
         }
       }, {
-        test: /\.scss$/,
+        test: /\.s?css$/,
         use: [{
+          loader: 'style-loader'
+        }, {
           loader: 'css-loader'
         }, {
-          loader: 'sass-loader'
+          loader: 'sass-loader',
+        }]
+      }, {
+        test: /\.(jpe?g|png|gif|svg)(\?\S*)?$/i,
+        use: [{
+          loader: 'url-loader',
+          options: {
+            limit: 8192,
+            name: path.posix.join(N.dist, 'img/[name].[hash:8].[ext]')
+          }
+        }]
+      }, {
+        test: /\.(eot|ttf|woff)?$/,
+        use: [{
+          loader: 'file-loader',
+          options: {
+            limit: 8192,
+            name: path.posix.join('dist', 'fonts/[name].[hash:8].[ext]')
+          }
         }]
       }]
     },
     devServer: {
-      clientLogLevel: 'warning',
+      clientLogLevel: 'error',
       hot: true,
       inline: true,
       compress: true,
@@ -50,7 +71,7 @@ module.exports = function (N) {
         'Access-Control-Allow-Headers': 'Origin, X-Requested-With, Content-Type, Accept'
       },
       watchOptions: {
-        poll: false,
+        poll: true,
         ignored: /node_modules/
       }
     },

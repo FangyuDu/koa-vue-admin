@@ -3,4 +3,3 @@ require('babel-core/register')(babelConfig)
 
 const N = require('./config')
 require('./server')(N)
-require('./client')(N)

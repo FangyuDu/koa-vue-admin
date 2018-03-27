@@ -5,6 +5,6 @@ const router = koaRouter()
 router.all('/', controller.page.home)
 
 // api
-router.get('/api/gitclone', controller.api.cloneRepo)
+router.post('/api/gitclone', controller.api.cloneRepo)
 
 export default router

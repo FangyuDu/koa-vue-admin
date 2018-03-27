@@ -1,4 +1,6 @@
 <template lang="pug">
-  .app
-    h1 测试
+  router-view
 </template>
+<style lang="scss">
+@import './assets/style/index.scss';
+</style>
